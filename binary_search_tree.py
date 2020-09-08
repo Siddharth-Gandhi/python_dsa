@@ -66,16 +66,32 @@ class binary_search_tree:
             print(cur_node.value)
             self._print_tree(cur_node.right_child)
 
+    def height(self):
+        if self.root != None:
+            return self._height(self.root, 0)
+        else:
+            return 0
 
-def make_rand_tree(tree, num_ele=50, max_int=100):
-    from random import randint
+    def _height(self, cur_node, cur_ht):
+        if cur_node == None:
+            return cur_ht
+        left_height = self._height(cur_node.left_child, cur_ht + 1)
+        right_height = self._height(cur_node.right_child, cur_ht + 1)
+        return max(left_height, right_height)
 
-    for _ in range(num_ele):
-        cur_elem = randint(0, max_int)
-        tree.insert(cur_elem)
+    def make_rand_tree(self, num_ele=10, max_int=100):
+        from random import randint
+
+        for _ in range(num_ele):
+            cur_elem = randint(0, max_int)
+            self.insert(cur_elem)
+
+    def make_tree_from_list(self, arr):
+        for ele in arr:
+            self.insert(ele)
 
 
 tree = binary_search_tree()
-make_rand_tree(tree)
-
+tree.make_tree_from_list([1, 2, 3, 4, 5])
 tree.print_tree()
+print("Tree height is", tree.height())
