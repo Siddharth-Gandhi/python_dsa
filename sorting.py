@@ -1,6 +1,6 @@
 import random 
 
-def insertionSort(A):
+def insertion_sort(A):
     n = len(A)
     test = "hello"
     for j in range(1, n):
@@ -12,7 +12,7 @@ def insertionSort(A):
         A[i + 1] = key
 
 
-def reverseInsertionSort(A):
+def reverse_insertion_sort(A):
     n = len(A)
     for j in range(n - 1, -1, -1):
         key = A[j]
@@ -26,5 +26,5 @@ def reverseInsertionSort(A):
 if __name__ == "__main__":
     A = [random.randint(1,100) for _ in range(20)]
     print("Before sorting: ", A)
-    insertionSort(A)
+    insertion_sort(A)
     print("After sorting: ", A)
